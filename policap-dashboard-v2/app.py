@@ -1,8 +1,14 @@
 import streamlit as st
 import pandas as pd
-from dotenv import load_dotenv
 
-load_dotenv()
+
+# make dotenv optional so Cloud never crashes if the package isn't there yet
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
+
 
 from src.ingest.loaders import (
     load_events_local, load_congress_trades_local, load_yields_local, load_commods_local,
