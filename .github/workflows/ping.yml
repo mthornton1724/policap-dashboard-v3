@@ -1,0 +1,10 @@
+name: Keep Streamlit Warm
+on:
+  schedule:
+    - cron: "0 * * * *"
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl app
+        run: curl -L --max-time 20 "https://policap-dashboard-v3-6jwbqxdgorcwjqnvnhch9k.streamlit.app/" || true
